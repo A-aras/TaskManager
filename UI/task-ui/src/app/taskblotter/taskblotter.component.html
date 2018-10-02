@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="container-fluid">
+        <app-taskquery #taskQuery></app-taskquery>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-stripped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Task</th>
+                    <th>Parent Task</th>
+                    <th>Priority</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <!-- <tbody>
+    <tr *ngFor="let RowData of Tasks">
+        <td>
+            <span class="badge badge-secondary">{{RowData.TaskDescription}}</span>
+        </td>
+        <td>
+              <span class="badge badge-secondary">{{RowData.ParentTask.Parent_Task}}</span>
+            </td>
+            <td>
+              {{RowData.Priority}}
+            </td>
+            <td>
+              {{RowData.StartDate|date:"dd/MMM/yyyy"}}
+            </td>
+            <td>
+              {{RowData.EndDate|date:"dd/MMM/yyyy"}}
+            </td>
+      
+            <td>
+            <div class="row">
+              <div class="col-md-6">
+                  <button class="btn-primary">Edit</button>
+              </div>
+              <div class="col-md-6">
+                  <button class="btn-primary">Delete</button>
+              </div>
+              </div>
+            </td>
+
+    </tr>
+  </tbody> -->
+
+
+            <tr *ngFor="let task of Tasks" app-taskrow [RowData]="task" (messageEvent)="HandleUserAction($event)">
+                <!-- <app-taskrow [RowData]="task"></app-taskrow> -->
+
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <!-- <div class="row">
+        <div class="col-lg-2">
+            <h3>Task</h3>
+        </div>
+        <div class="col-lg-2">
+            <h3>Parent Task</h3>
+        </div>
+        <div class="col-lg-2">
+            <h3>Priority</h3>
+        </div>
+        <div class="col-lg-2">
+            <h3>Start</h3>
+        </div>
+        <div class="col-lg-2">
+            <h3>End</h3>
+        </div>
+    
+        <div class="col-lg-2">
+            <h3>Command</h3>
+        </div>
+      </div>
+    
+        <div class="row" *ngFor="let task of Tasks">
+          <app-taskrow [RowData]="task"></app-taskrow>
+        </div>
+      
+    </div> -->

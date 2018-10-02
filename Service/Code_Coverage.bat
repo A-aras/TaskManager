@@ -1,0 +1,2 @@
+%cd%\opencover.4.6.519\OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\NUnit 2.6.1\bin\nunit-console.exe" -targetargs:"%cd%\Task.Api.Tests\bin\Debug\Task.Api.Tests.dll /noshadow" -filter:"+[Task.Api*]* -[Task.Api.Tests]*" -output:"%cd%\CodeCoverage_Report\Task_Code_Coverage.xml"
+pause

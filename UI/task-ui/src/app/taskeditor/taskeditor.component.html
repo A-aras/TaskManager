@@ -1,0 +1,170 @@
+<form [formGroup]="myform" class="form-horizontal">
+  <div class="container-fluid justify-content ">
+
+    <div class="form-group form-inline">
+      <label for="taskInput" class="col-sm-1">Task: </label>
+      <input id="taskInput" type="text" placeholder="Task Description" class="form-control col-sm-5" [formControl]="taskName" required>
+      <div *ngIf="taskName.invalid && taskName.dirty && taskName.errors?.required" class="alert alert-danger col-sm-5">
+        Task Description is Required
+      </div>
+    </div>
+
+    <!-- <div class="form-group form-inline">
+      <label for="taskPriority" class="col-sm-1"> Priority: </label>
+      <input type="range" id="taskPriority" min="{{priorityMin}}" max="{{priorityMax}}" value="30" class="form-control-range col-sm-5"
+        [formControl]="priority" />
+        <div *ngIf="priority.invalid && priority.dirty && priority.errors?.required" class="alert alert-danger col-sm-5">
+          Task Description is Required
+        </div>
+    </div> -->
+
+
+    <div class="form-group form-inline">
+      <label for="taskPriority" class="col-sm-1"> Priority: </label>
+      <div class="col-sm-5">
+        <div>
+          <div class="float-left">{{priorityMin}}</div>
+          <div class="float-right">{{priorityMax}}</div>
+        </div>
+        <input type="range" min="{{priorityMin}}-1" max="{{priorityMax}}" class="form-control-range col-sm-12" id="taskPriority"
+          [formControl]="priority">
+      </div>
+      <div *ngIf="priority.invalid && priority.errors?.required" class="alert alert-danger col-sm-5">
+        Priority is required
+      </div>
+      <div *ngIf="priority.invalid && priority.errors?.min" class="alert alert-danger col-sm-5">
+        Priority must be greater than {{priorityMin}}
+      </div>
+      <div *ngIf="priority.invalid && priority.errors?.max" class="alert alert-danger col-sm-5">
+        Priority must be less than {{priorityMax}}
+      </div>
+      <!-- <div *ngIf="priority.dirty && priority.invalid" class="invalid-feedback">
+          <div *ngIf="priority.errors.required">Priority is required</div>
+        </div> -->
+
+    </div>
+
+
+
+    <!-- <div class="row form-inline">
+      <div class="col-6 ml-50">
+        <div class="input-group">
+          <label for="taskPriority"> Priority: </label>
+          <input type="range" id="taskPriority" min="{{priorityMin}}" max="{{priorityMax}}" value="30" class="form-control-range" [formControl]="priority"
+          />
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="form-group form-inline">
+      <label for="parentTaskInput" class="col-sm-1">Parent Task: </label>
+      <input class="form-control col-sm-5"  [formControl]="parentTask" list="parentTaskList" type="text" id="parentTaskInput" />
+      <datalist id="parentTaskList">
+        <option  [ngValue]="null"  >--Select--</option>
+        <option *ngFor="let paretnTaskOj of ParentTasks" [ngValue]="paretnTaskOj.ParentTaskId" >{{paretnTaskOj.Parent_Task}}</option>
+      </datalist>
+      <div *ngIf="parentTask.invalid && parentTask.dirty && parentTask.errors?.DefaultValueValidator" class="alert alert-danger col-sm-5">
+        Task Description is Required
+      </div>
+    </div> -->
+
+
+    <div class="form-group form-inline">
+      <label for="parentTaskInput" class="col-sm-1">Parent Task: </label>
+      <select class="form-control col-sm-5" [formControl]="parentTask" id="parentTaskInput">
+        <option [ngValue]="null">--Select--</option>
+        <option *ngFor="let paretnTaskOj of ParentTasks" [ngValue]="paretnTaskOj.ParentTaskId">{{paretnTaskOj.Parent_Task}}</option>
+      </select>
+      <div *ngIf="parentTask.invalid && parentTask.errors?.DefaultValueValidator" class="alert alert-danger col-sm-5">
+        Task Description is Required
+      </div>
+    </div>
+
+
+    <form [formGroup]="dateFormGroup">
+
+      <div class="form-group form-inline">
+        <label for="startDate" class="col-sm-1">Start Date: </label>
+        <input type="text" id="startDate" placeholder="select date" class="form-control col-sm-5" placeholder="Start Date" [formControl]="startDate"
+          bsDatepicker [bsConfig]="{dateInputFormat: 'DD-MM-YYYY', containerClass:'theme-dark-blue'}" />
+        <div *ngIf="startDate.invalid &&  startDate.errors?.IsValidDate" class="alert alert-danger col-sm-5">
+          Start Date is Invalid
+        </div>
+        <div *ngIf="startDate.invalid &&  startDate.errors?.required" class="alert alert-danger col-sm-5">
+          Start Date is Required
+        </div>
+      </div>
+
+      <div class="form-group form-inline">
+        <label for="endDate" class="col-sm-1">Start Date: </label>
+        <input type="text" id="endDate" placeholder="select date" class="form-control col-sm-5" [formControl]="endDate" bsDatepicker
+          [bsConfig]="{dateInputFormat: 'DD-MM-YYYY', containerClass:'theme-dark-blue'}" />
+        <div *ngIf="endDate.invalid &&  endDate.errors?.IsValidDate" class="alert alert-danger col-sm-5">
+          End Date is Invalid
+        </div>
+        <div *ngIf="endDate.invalid &&  endDate.errors?.required" class="alert alert-danger col-sm-5">
+          End Date is Required
+        </div>
+      </div>
+
+      <!-- <div class="form-group form-inline">
+        <label for="startDate" class="col-sm-1">Start Date: </label>
+        <input type="date" id="startDate" class="form-control col-sm-5" placeholder="Start Date" [formControl]="startDate" />
+        <div *ngIf="startDate.invalid &&  startDate.errors?.IsValidDate" class="alert alert-danger col-sm-5">
+          Start Date is Invalid
+        </div>
+        <div *ngIf="startDate.invalid &&  startDate.errors?.required" class="alert alert-danger col-sm-5">
+          Start Date is Required
+        </div>
+      </div> -->
+
+      <!-- <div class="form-group form-inline">
+        <label for="endDate" class="col-sm-1"> End Date: </label>
+        <input type="date" id="endDate" class="form-control col-sm-5" placeholder="End Date" [formControl]="endDate" />
+        <div *ngIf="endDate.invalid &&  endDate.errors?.IsValidDate" class="alert alert-danger col-sm-5">
+          End Date is Invalid
+        </div>
+        <div *ngIf="endDate.invalid &&  endDate.errors?.required" class="alert alert-danger col-sm-5">
+          End Date is Required
+        </div>
+      </div> -->
+
+      <div class="form-group form-inline">
+        <div *ngIf="dateFormGroup.invalid && dateFormGroup.dirty" class="alert alert-danger">
+          To Date must be greater than Start Date
+        </div>
+      </div>
+    </form>
+
+    <div class="container-fluid justify-content-center">
+      <div class="form-group form-inline">
+
+        <div class="col-sm-1"></div>
+        <button class="btn btn-primary col-sm-2 mx-auto" (click)="OnAddTask()" value="Add Task">{{btnAction}} Task</button>
+
+        <div class="modal fade" bsModal #alertModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 id="dialog-static-name" class="modal-title pull-left">Confirm?</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="alertModal.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Do you want to {{btnAction}} Task?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="confirm()">Yes</button>
+                <button type="button" class="btn btn-default" (click)="decline()">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-1"></div>
+        <button class="btn btn-primary col-sm-2 mx-auto" value="Reset" type="reset">Reset</button>
+        <div class="col-sm-6"></div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,25 @@
+<!-- <nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar-nav">
+    <li class="navbar-item">
+      <a routerlink="" class="nav-link">View Tasks</a>
+    </li>
+    <li class="navbar-item">
+      <a routerlink="" class="nav-link">Add Tasks</a>
+      <li></li>
+  </ul>
+</nav> -->
+
+<nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+  <div class="col-6">
+      <div class="navbar-collapase">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/ViewTask" routerLinkActive="active">View Task</a>
+      <a class="nav-item nav-link" routerLink="/AddTask"  routerLinkActive="active">Add Task</a>
+    </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <a class="navbar-brand navbar-center" href="#">Task Manager</a>
+  </div>
+</nav>
+<router-outlet></router-outlet>

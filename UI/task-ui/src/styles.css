@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* @import "~bootstrap/dist/css/bootstrap.css" */
+
+body{
+background-color: blue;
+padding-top:70px;
+}
+
+.HighlightDiv
+{
+    background-color: silver;
+    width:100%!important;
+    height: 100%!important;
+    padding :0px!important;
+    margin: 0px!important;
+}
+
+.label-fill
+{
+    display: block;
+    /* margin: .3em;
+    padding: .3em; */
+    background-color: silver
+
+}
+
+.table-row
+{
+    display: table;
+}
+
+.table-row[class*="col-"]
+{
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.fieldlabelleft
+{
+    justify-content: left!important;
+}
+
+.childfrom
+{
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+
+.jumbotron-row
+{
+    max-height: 70px!important;
+    min-height: 50px!important;
+    padding: 0px!important;
+    margin: 0px!important;
+    border-radius: 0px;
+}

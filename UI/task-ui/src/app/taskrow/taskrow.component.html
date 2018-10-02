@@ -1,0 +1,86 @@
+<td>
+  <div class="container-fluid  ">
+    <div class="HighlightDiv">
+
+    <!-- <div class="jumbotron jumbotron-fluid jumbotron-row "> -->
+      <!-- {{RowData.TaskDescription}} -->
+      <span class="label label-default label-fill" >{{RowData.TaskDescription}}</span>
+    <!-- </div> -->
+  </div>
+  </div>
+</td>
+<td>
+    <!-- <div class="jumbotron jumbotron-fluid jumbotron-row justify-content-center" *ngIf="RowData.ParentTask">{{RowData.ParentTask.Parent_Task}}</div> -->
+    <div class=" h-100 w-100 d-block  bg-dark text-white" *ngIf="RowData.ParentTask">{{RowData.ParentTask.Parent_Task}}</div>
+  <!-- <span class="badge badge-secondary">{{RowData.ParentTask.Parent_Task}}</span> -->
+  <!-- <span class="label label-default label-fill" *ngIf="RowData.ParentTask">{{RowData.ParentTask.Parent_Task}}</span> -->
+  <!-- {{RowData.parentTask}} -->
+</td>
+<td>
+  {{RowData.Priority}}
+</td>
+<td>
+  {{RowData.StartDate|date:"dd/MMM/yyyy"}}
+</td>
+<td>
+  {{RowData.EndDate|date:"dd/MMM/yyyy"}}
+</td>
+
+<td>
+  <div class="row">
+    <div class="col-md-4">
+      <button class="btn btn-dark" [disabled]="RowData.IsClosed" (click)="OnEdit()">Edit</button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-dark" [disabled]="RowData.IsClosed" (click)="OnEndTask()">End Taks</button>
+
+
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-dark" (click)="OnDelete()">Delete</button>
+
+      
+
+    </div>
+  </div>
+</td>
+
+<div class="modal fade" bsModal #endTaskModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-static-name" class="modal-title pull-left">Confirm?</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="endTaskModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to End Task?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="confirmEndTask()">Yes</button>
+        <button type="button" class="btn btn-default" (click)="declineEndTask()">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #deleteTaskModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-static-name" class="modal-title pull-left">Confirm?</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="deleteTaskModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to delete Task?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="confirmDelete()">Yes</button>
+        <button type="button" class="btn btn-default" (click)="declineDelete()">No</button>
+      </div>
+    </div>
+  </div>
+</div>
